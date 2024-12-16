@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { addNewStudent } from "../service/informationService";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { getAddressStudent } from "../service/addressService";
+import { toast } from "react-toastify";
 
 function AddComponent() {
-	const [student, setStudent] = useState({ id: "", name: "", phone: "", email: "" });
+	const [student, setStudent] = useState({ id: "", name: "", gender: "", address: "", phone: "", email: "" });
+	const [addressStudent, setAddressStudent] = useState([]);
 
+	useEffect(() => {
+		const fetchData = async () => {
+			const list = await getAddressStudent();
+			setAddressStudent(list);
+		};
+		fetchData();
+	});
 	const navigate = useNavigate();
 	const handleSubmit = async (value) => {
-		await addNewStudent(value);
+		console.log(value);
+		//Chuyển từ chuỗi xử lý option ở dưới thành đối tượng. Phải sử dụng JSON.parse() không thì dữ liệu sẽ thành dạng chuỗi như này {\"id\":1,\"name\":\"Ha Noi\"}. JSON.parse() có tác dụng chuyển từ dạng chuỗi sang đối tượng.
+		const student = {
+			...value,
+			address: JSON.parse(value.address),
+		};
+		await addNewStudent(student);
+		toast.success("Thêm mới thành công");
 		navigate("/students_list");
 	};
 
@@ -54,16 +71,12 @@ function AddComponent() {
 						<div className="col-sm-4">
 							<div>
 								<div className="form-check form-check-inline">
-									<Field className="form-check-input" type="radio" name="male" id="inlineRadio1" value="male" />
-									<label className="form-check-label" htmlFor="inlineRadio1">
-										Male
-									</label>
+									<Field className="form-check-input" type="radio" name="gender" value="male" />
+									<label className="form-check-label">Male</label>
 								</div>
 								<div className="form-check form-check-inline">
-									<Field className="form-check-input" type="radio" name="female" id="inlineRadio2" value="female" />
-									<label className="form-check-label" htmlFor="inlineRadio2">
-										Female
-									</label>
+									<Field className="form-check-input" type="radio" name="gender" value="female" />
+									<label className="form-check-label">Female</label>
 								</div>
 							</div>
 						</div>
@@ -81,10 +94,11 @@ function AddComponent() {
 						<label className="col-sm-1">Address:</label>
 						<div className="col-sm-4">
 							<Field as="select" name="address" className="form-select">
-								<option selected>City</option>
-								<option value={1}>Ha Noi</option>
-								<option value={2}>Thanh Pho Ho Chi Minh</option>
-								<option value={3}>Da Nang</option>
+								<option value={""}>City</option>
+								{addressStudent.map((a) => (
+									<option value={JSON.stringify(a)}>{a.name}</option>
+									//phải chuyển dữ liệu sang dạng chuỗi bằng cách JSON.stringify()
+								))}
 							</Field>
 						</div>
 					</div>

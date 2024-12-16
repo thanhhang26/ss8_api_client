@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import StudentItem from "./StudentItem";
 import DeleteComponent from "./DeleteComponent";
 import { getAllStudent, searchByName } from "../service/informationService";
+import { getAddressStudent } from "../service/addressService";
 
 function StudentList() {
 	const [studentList, setStudentList] = useState([]);
@@ -13,7 +14,17 @@ function StudentList() {
 		console.log("------- userEffect run ----------------------");
 		const fetchData = async () => {
 			const list = await getAllStudent();
-			setStudentList(list);
+			const addressList = await getAddressStudent();
+			// Kết hợp thông tin sinh viên và địa chỉ
+			const studentsWithAddress = list.map((student) => {
+				// Tìm địa chỉ của sinh viên theo id
+				const address = addressList.find((a) => a.id === student.id);
+				return {
+					...student,
+					address: address ? address.name : "Không có địa chỉ",
+				};
+			});
+			setStudentList(studentsWithAddress);
 		};
 		fetchData();
 	}, [show]);

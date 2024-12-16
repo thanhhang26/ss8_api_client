@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function StudentItem(props) {
 	const { id, name, phone, email, gender, address } = props.student;
+
 	return (
 		<tr>
 			<td className="text-center">{+props.i + 1}</td>

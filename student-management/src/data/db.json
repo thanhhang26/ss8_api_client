@@ -4,6 +4,7 @@
       "stt": 1,
       "id": 1,
       "name": "Nguyễn Văn A",
+      "gender": "Male",
       "phone": "0123456789",
       "email": "nguyenvana@gmail.com"
     },
@@ -11,6 +12,7 @@
       "stt": 2,
       "id": 2,
       "name": "Nguyễn Văn B",
+      "gender": "Male",
       "phone": "0987654321",
       "email": "tranvanb@gmail.com"
     },
@@ -18,17 +20,31 @@
       "stt": 3,
       "id": 3,
       "name": "Nguyễn Thị C",
+      "gender": "Female",
       "phone": "0192837465",
-      "email": "nguyenvanc@gmail.com"
-    },
-    {
-      "id": "6",
-      "name": "Thanh Hằng",
-      "phone": "0334534831",
-      "email": "dinhhang440@gmail.com",
-      "male": "male",
-      "address": "1"
+      "email": "nguyenthic@gmail.com"
     }
   ],
-  "students": []
+  "address": [
+    {
+      "id": 1,
+      "name": "Ha Noi"
+    },
+    {
+      "id": 2,
+      "name": "Thanh pho Ho Chi Minh"
+    },
+    {
+      "id": 3,
+      "name": "Da Nang"
+    },
+    {
+      "id": 4,
+      "name": "Ha Nam"
+    },
+    {
+      "id": 5,
+      "name": "Ha Dong"
+    }
+  ]
 }
