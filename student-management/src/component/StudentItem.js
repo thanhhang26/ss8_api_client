@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function StudentItem(props) {
+	console.log(props.student);
+
 	const { id, name, phone, email, gender, address } = props.student;
 
 	return (
@@ -11,7 +13,7 @@ function StudentItem(props) {
 			<td className="text-center">{name}</td>
 			<td className="text-center">{gender}</td>
 			<td className="text-center">{phone}</td>
-			<td className="text-center">{address}</td>
+			<td className="text-center">{address ? address.name : "Không có địa chỉ"}</td>
 			<td className="text-center">{email}</td>
 			<td className="text-center">
 				<Link className="btn btn-secondary me-3" to={"/detail/" + id}>

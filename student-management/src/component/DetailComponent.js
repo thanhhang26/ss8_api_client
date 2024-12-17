@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getStudentById } from "../service/informationService";
+import { getStudentById } from "../service/studentService";
 
 function DetailComponent() {
 	const [studentDetail, setStudentDetail] = useState({ id: "", name: "", phone: "", email: "" });

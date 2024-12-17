@@ -1,31 +1,39 @@
 {
-  "information": [
+  "students": [
     {
-      "stt": 1,
       "id": 1,
       "name": "Nguyễn Văn A",
       "gender": "Male",
+      "addressId": 2,
       "phone": "0123456789",
       "email": "nguyenvana@gmail.com"
     },
     {
-      "stt": 2,
       "id": 2,
       "name": "Nguyễn Văn B",
       "gender": "Male",
+      "addressId": 3,
       "phone": "0987654321",
       "email": "tranvanb@gmail.com"
     },
     {
-      "stt": 3,
       "id": 3,
       "name": "Nguyễn Thị C",
       "gender": "Female",
+      "addressId": 4,
       "phone": "0192837465",
       "email": "nguyenthic@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Thanh Hang",
+      "gender": "Female",
+      "addressId": 1,
+      "phone": "0334534831",
+      "email": "dinhhang440@gmail.com"
     }
   ],
-  "address": [
+  "addresses": [
     {
       "id": 1,
       "name": "Ha Noi"

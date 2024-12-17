@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { deleteStudentById } from "../service/informationService";
+import { deleteStudentById } from "../service/studentService";
 function DeleteComponent(props) {
 	const handleClose = async () => {
 		await props.closeModal();

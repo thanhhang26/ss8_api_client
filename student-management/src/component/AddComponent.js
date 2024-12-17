@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addNewStudent } from "../service/informationService";
+import { addNewStudent } from "../service/studentService";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { getAddressStudent } from "../service/addressService";

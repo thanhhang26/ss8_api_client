@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import StudentItem from "./StudentItem";
 import DeleteComponent from "./DeleteComponent";
-import { getAllStudent, searchByName } from "../service/informationService";
+import { getAllStudent, searchByName } from "../service/studentService";
 import { getAddressStudent } from "../service/addressService";
 
 function StudentList() {
@@ -14,17 +14,17 @@ function StudentList() {
 		console.log("------- userEffect run ----------------------");
 		const fetchData = async () => {
 			const list = await getAllStudent();
-			const addressList = await getAddressStudent();
+			// const addressList = await getAddressStudent();
 			// Kết hợp thông tin sinh viên và địa chỉ
-			const studentsWithAddress = list.map((student) => {
-				// Tìm địa chỉ của sinh viên theo id
-				const address = addressList.find((a) => a.id === student.id);
-				return {
-					...student,
-					address: address ? address.name : "Không có địa chỉ",
-				};
-			});
-			setStudentList(studentsWithAddress);
+			// const studentsWithAddress = list.map((student) => {
+			// 	// Tìm địa chỉ của sinh viên theo id
+			// 	const address = addressList.find((a) => a.id === student.id);
+			// 	return {
+			// 		...student,
+			// 		address: address ? address.name : "Không có địa chỉ",
+			// 	};
+			// });
+			setStudentList(list);
 		};
 		fetchData();
 	}, [show]);
